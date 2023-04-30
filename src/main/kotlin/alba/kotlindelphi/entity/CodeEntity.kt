@@ -5,6 +5,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 
+/*Por ser data class possui construtor e pode ser instanciada*/
 @Entity
 @Table(name="authcodes")
 class CodeEntity {

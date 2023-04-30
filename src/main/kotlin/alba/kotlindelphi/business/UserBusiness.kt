@@ -14,8 +14,9 @@ class UserBusiness(
 ) {
 
     @PostMapping("test")
-    fun postUser(userDto:UserDto){
+    fun postUser(@RequestBody userDto:UserDto){
         val retorno = codeAuthRepository.queryAuthCode(userDto.uuid)
+        jpaUserRepository.save(userDtoToUserEntity(userDto))
     }
 
     fun userDtoToUserEntity(userDto: UserDto):UserEntity{
