@@ -1,0 +1,8 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+create table authCodes as(
+select
+id_code,
+uuid_generate_v4() as code
+from generate_series(1,25) as id_code
+)
