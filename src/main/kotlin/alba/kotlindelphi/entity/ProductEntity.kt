@@ -1,6 +1,7 @@
 package alba.kotlindelphi.entity
 
 import jakarta.persistence.*
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "products")
@@ -11,6 +12,12 @@ class ProductEntity (
 
     @Column
     val product_name : String? = "",
+
+    @Column
+    val product_cost_price: BigDecimal? = null,
+
+    @Column
+    val product_sale_price: BigDecimal? = null,
 
     @ManyToMany(mappedBy = "product_sold")
     val sale: List<SaleEntity> = listOf(),
