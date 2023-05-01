@@ -1,8 +1,8 @@
 package alba.kotlindelphi.business
 
-
 import alba.kotlindelphi.DTO.StoreDto
 import alba.kotlindelphi.entity.StoreEntity
+import alba.kotlindelphi.entity.UserEntity
 import alba.kotlindelphi.repository.StoreRepository
 import alba.kotlindelphi.repository.UserRepository
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,16 +17,15 @@ class StoreBusiness(
     val storeRepository: StoreRepository,
     val userRepository: UserRepository
 ) {
-
     @PostMapping("save/{user_id}")
-    fun postStore(@PathVariable user_id:Long, @RequestBody storeEntity: StoreEntity){
-        val x = userRepository.findById(user_id).map{
+    fun postStore(@PathVariable user_id:Long, @RequestBody storeDto: StoreDto){
+        userRepository.findById(user_id).map{
             user ->
-            storeEntity.user = user
-            storeRepository.save(storeEntity)
+            storeRepository.save(storeDtoToStoreEntity(storeDto,user))
         }
+    }
 
-
-
+    fun storeDtoToStoreEntity(storeDto: StoreDto, user: UserEntity):StoreEntity{
+        return StoreEntity(null,storeDto.store_name,user)
     }
 }
