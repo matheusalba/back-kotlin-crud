@@ -4,27 +4,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
-import java.time.LocalDate
+import java.util.UUID
 
 @Entity
-@Table(name = "sales")
-class SaleEntity(
-
+@Table(name ="paymentsCode")
+class PaymentCodeEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val sale_id: Long? = 0,
+    var payment_code_id: Long? = 0,
 
-    @Column
-    val sale_date: LocalDate = LocalDate.now(),
-
-    @Column
-    @Enumerated(EnumType.STRING)
-    val sale_payment_method: PaymentMethodEnum? = null,
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    val payment_code_uuid: UUID? = UUID.randomUUID(),
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "store_id", nullable = false)
+    @JoinColumn(name = "sale_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    var store_id: StoreEntity? = null
+    val payment_code_venda_id: SaleEntity? = null
 
-)
+    )

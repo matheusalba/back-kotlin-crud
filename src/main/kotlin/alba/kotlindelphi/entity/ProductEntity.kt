@@ -19,9 +19,6 @@ class ProductEntity (
     @Column
     val product_sale_price: BigDecimal? = null,
 
-    @ManyToMany(mappedBy = "product_sold")
-    val sale: List<SaleEntity> = listOf(),
-
     @Column
     @OneToMany(mappedBy = "group_id")
     val group : List<ProductEntity>? = listOf(),
