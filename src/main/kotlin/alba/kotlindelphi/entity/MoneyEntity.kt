@@ -12,26 +12,26 @@ import java.time.LocalDateTime
 class MoneyEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val moneyId: Long? = 0,
+    val money_id: Long? = null,
 
     @Column
-    val moneyLocalDateTime: LocalDateTime = LocalDateTime.now(),
+    val money_local_date_time: LocalDateTime = LocalDateTime.now(),
 
     @Column
-    val moneyValue: BigDecimal? =  BigDecimal.ZERO ,
+    val money_value: BigDecimal? =  BigDecimal.ZERO ,
 
     @Column
-    val moneyEmployer: String? = "",
+    val money_employer: String? = "",
 
     @Column
-    val moneyLocal: String? = "",
+    val money_local: String? = "",
 
     @Column
     val monetaryUnit: String? = "",
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "payment_code_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "payment_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    val moneyPaymentCode: PaymentCodeEntity? = null,
+    val money_payment_id: PaymentEntity? = null,
     )

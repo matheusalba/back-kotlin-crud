@@ -12,11 +12,7 @@ class PixEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var pix_id: Long? = 0,
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "payment_code_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    val pix_payment_code: PaymentCodeEntity? = null
+
 
     )
 

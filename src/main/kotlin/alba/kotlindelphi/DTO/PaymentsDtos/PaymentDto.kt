@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 class PaymentDto(
-    val paymentCode: UUID,
+    val saleId: Long,
     val money:List<Money>? = null,
     val credit:List<Credit>? = null,
     val pix:List<Pix>? = null,

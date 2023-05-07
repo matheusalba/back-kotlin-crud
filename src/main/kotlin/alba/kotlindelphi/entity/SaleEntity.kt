@@ -27,4 +27,6 @@ class SaleEntity(
     @JsonIgnore
     var store_id: StoreEntity? = null
 
+
+
 )
